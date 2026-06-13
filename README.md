@@ -1,10 +1,10 @@
 # PayFlow API
 
-# Project Overview
+# About the Project
 
-PayFlow API is a Spring Boot backend application developed to manage users and financial transactions. The project demonstrates the implementation of REST APIs, database integration using Spring Data JPA, and CRUD operations with an H2 in-memory database.
+PayFlow API is a backend application built using Spring Boot. The main goal of this project is to learn how REST APIs work, how data can be stored in a database using JPA, and how different layers of a Spring Boot application interact with each other.
 
-The application allows users to be created and stored in the database while also supporting transaction management between users.
+In this project, users can be registered and stored in a database, and transactions can be recorded between users. The project uses the H2 in-memory database for easy testing and development.
 
 
 # Technologies Used
@@ -14,110 +14,147 @@ The application allows users to be created and stored in the database while also
 - Spring Data JPA
 - H2 Database
 - Maven
-
+- Git & GitHub
 
 
 # Project Structure
 
-`
+```text
 src/main/java/com/payflow
 ├── controller
 ├── entity
 ├── repository
 ├── service
 └── PayflowApiApplication.java
-`
-
-# Package Description
-
-- controller – Handles incoming HTTP requests and API endpoints.
-- entity – Contains database entity classes such as User and Transaction.
-- repository – Provides database access using JPA repositories.
-- service – Contains business logic for users and transactions.
-- PayflowApiApplication – Main entry point of the Spring Boot application.
+```
 
 
-# Features Implemented
+# Features
 
 # User Management
-- Create a new user
-- Retrieve user details
-- Store user information in the database
+
+- Add a new user
+- View all users
+- Find a user by ID
+- Find a user using UPI ID
+- View users having balance greater than a specified amount
 
 # Transaction Management
-- Create transactions
-- View transaction records
-- Persist transaction data using JPA
 
-# Database Integration
+- Create a transaction
+- Store transaction records
+- View transaction information
+
+# Database Support
+
 - H2 in-memory database
 - Automatic table creation using Hibernate
-- H2 Console support for database inspection
+- H2 Console for viewing database tables and records
 
 
-# Database Configuration
+# Running the Project
 
-# H2 Console
+# Compile
 
-`
-/h2-console
-`
+```bash
+mvn clean compile
+```
 
-### Connection Details
+# Start the Application
 
-`
+```bash
+mvn spring-boot:run
+```
+
+The application runs on:
+
+```text
+http://localhost:8080
+```
+
+
+
+# Available API Endpoints
+
+# User APIs
+
+| Method | Endpoint |
+|----------|----------|
+| POST | /users |
+| GET | /users |
+| GET | /users/{id} |
+| GET | /users/upi/{upiId} |
+| GET | /users/balance/{amount} |
+
+# Transaction APIs
+
+| Method | Endpoint |
+|----------|----------|
+| POST | /transactions |
+| GET | /transactions |
+
+
+
+# H2 Database Access
+
+Open:
+
+```text
+http://localhost:8080/h2-console
+```
+
+Use the following credentials:
+
+```text
 JDBC URL : jdbc:h2:mem:testdb
 Username : sa
 Password : (leave blank)
 ```
 
 
-# How to Run the Project
 
-# Compile the Project
+# Sample User JSON
 
-`bash
-mvn clean compile
-`
-
-# Run the Application
-
-`bash
-mvn spring-boot:run
-`
-
-The application starts on:
-
-`
-http://localhost:8080
-`
-
-# Testing the Database
-
-1. Start the application.
-2. Open the H2 Console.
-3. Use the provided JDBC URL and credentials.
-4. Verify the User and Transaction tables.
+```json
+{
+  "name": "Priya",
+  "upiId": "priya@okaxis",
+  "balance": 5000,
+  "phoneNumber": "9876543210"
+}
+```
 
 
-# Learning Outcomes
 
-Through this project, I gained practical experience in:
+# What I Learned
 
-- Spring Boot application development
-- REST API creation
-- Dependency Injection
-- Spring Data JPA
-- Database connectivity
-- Maven project management
-- Git and GitHub version control
+While building this project, I learned:
 
+- How Spring Boot applications are structured
+- Creating REST APIs using controllers
+- Using Spring Data JPA for database operations
+- Connecting applications with a database
+- Working with Maven dependencies
+- Using Git and GitHub for version control
+- Understanding layered architecture (Controller, Service, Repository)
+
+
+
+# Future Improvements
+
+Some features that can be added in the future are:
+
+- Validation for user inputs
+- Better exception handling
+- Spring Security for authentication
+- Swagger API documentation
+- Integration with MySQL or PostgreSQL
+- Transaction status tracking
 
 
 # Author
 
-Diksha Lang
+*Diksha Lang* 
+B.Sc. Computer Science Student
 
-Computer Science Student
-
-Project developed as part of Object-Oriented Programming and Backend Development practice using Spring Boot.
+This project was developed as part of my learning journey in Object-Oriented Programming and Spring Boot backend development.
