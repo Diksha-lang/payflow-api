@@ -30,7 +30,13 @@ public class UserController {
     }
 
     @GetMapping("/upi/{upiId}")
-    public User getUserByUpi(@PathVariable String upiId) {
+    public User getUserByUpiId(@PathVariable String upiId) {
         return userService.findByUpiId(upiId);
+    }
+
+    @GetMapping("/balance/{amount}")
+    public List<User> getUsersWithBalanceGreaterThan(
+            @PathVariable Double amount) {
+        return userService.findUsersWithBalanceGreaterThan(amount);
     }
 }

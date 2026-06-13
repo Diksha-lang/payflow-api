@@ -13,8 +13,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // Spring creates UserRepository bean and injects it automatically.
-
     public User registerUser(User user) {
         return userRepository.save(user);
     }
@@ -29,5 +27,9 @@ public class UserService {
 
     public User findByUpiId(String upiId) {
         return userRepository.findByUpiId(upiId);
+    }
+
+    public List<User> findUsersWithBalanceGreaterThan(Double amount) {
+        return userRepository.findUsersWithBalanceGreaterThan(amount);
     }
 }
